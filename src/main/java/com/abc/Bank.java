@@ -36,7 +36,7 @@ public class Bank {
     }
 
     public String getFirstCustomer() {
-        if (!customers.isEmpty() && customers != null) {
+        if (!customers.isEmpty()) {
             return customers.get(0).getName();
         } else {
             return "No customers available";

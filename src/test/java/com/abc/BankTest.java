@@ -51,4 +51,31 @@ public class BankTest {
         assertEquals(170.0, bank.getTotalInterestPaid(), DOUBLE_DELTA);
     }
 
+    @Test
+    public void testGetFirstCustomerWhenCustomersAvailable() {
+        // Arrange
+        Bank bank = new Bank();
+
+        Customer customer1 = new Customer("Alice");
+        Customer customer2 = new Customer("Bob");
+        bank.addCustomer(customer1);
+        bank.addCustomer(customer2);
+
+        // Act
+        String firstCustomerName = bank.getFirstCustomer();
+
+        // Assert
+        assertEquals("Alice", firstCustomerName);
+    }
+
+    @Test
+    public void testGetFirstCustomerWhenNoCustomers() {
+        Bank bank = new Bank();
+        // Act
+        String firstCustomerName = bank.getFirstCustomer();
+
+        // Assert
+        assertEquals("No customers available", firstCustomerName);
+    }
+
 }
