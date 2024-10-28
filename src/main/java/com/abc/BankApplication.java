@@ -5,33 +5,33 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 public class BankApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(BankApplication.class, args);
     }
 
     @Bean
     public CommandLineRunner loadData() {
-        return args -> {
-            // Create dummy accounts
+         return args -> {
+            // Create dummy accounts for users
             Account checkingAccount = new Account(Account.CHECKING);
             checkingAccount.deposit(1500);
-            Account savingsAccount = new Account(Account.SAVINGS);
+            checkingAccount.withdraw(500);
+            Account savingsAccount =     new Account(Account.SAVINGS);
             savingsAccount.deposit(2500);
+            savingsAccount.withdraw(600);
+            savingsAccount.transferTo(checkingAccount, 500);
             Account maxiSavingsAccount = new Account(Account.MAXI_SAVINGS);
             maxiSavingsAccount.deposit(3000);
-            Account superSavingsAccount = new Account(Account.SUPER_SAVINGS);
+            Account superSavingsAccount = new Account(Account.SUPER_SAVING);
             superSavingsAccount.deposit(4000);
 
             // Create customers and open accounts
-            Customer customer1 = new Customer("Alice Smith")
+            Customer customer1 = new Customer("jon Doe")
                     .openAccount(checkingAccount)
                     .openAccount(savingsAccount);
-            Customer customer2 = new Customer("Bob Johnson")
+            Customer customer2 = new Customer("Vaibhav")
                     .openAccount(maxiSavingsAccount)
                     .openAccount(superSavingsAccount);
 
@@ -41,3 +41,4 @@ public class BankApplication {
         };
     }
 }
+

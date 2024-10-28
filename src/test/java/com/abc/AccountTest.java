@@ -5,28 +5,26 @@
  */
 package com.abc;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
- *
  * @author Carrington
  */
 public class AccountTest {
 
     public AccountTest() {
     }
-    
+
     @Test
-    public void testTransfer(){
+    public void testTransfer() {
         Account a1 = new Account(0);
         Account a2 = new Account(0);
-        assertEquals(0,a1.sumTransactions(),0);
+        assertEquals(0, a1.sumTransactions(), 0);
         a1.deposit(10000);
-        a1.Transfer(a2, 5000);
-        assertEquals(5000,a1.sumTransactions(),0);
-        assertEquals(5000,a2.sumTransactions(),0);
+        a1.transferTo(a2, 5000);
+        assertEquals(5000, a1.sumTransactions(), 0);
+        assertEquals(5000, a2.sumTransactions(), 0);
     }
 }
